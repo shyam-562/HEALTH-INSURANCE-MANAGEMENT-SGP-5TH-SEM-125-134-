@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}My Policy Status{% endblock %}
+
+{% block content %}
+    <h2>My Policy Status</h2>
+    <ul>
+        {% for status in statuses %}
+            <li>
+                Policy: {{ status.policy.name }} - Status: {{ status.status }} - Applied on: {{ status.applied_on }}
+            </li>
+        {% empty %}
+            <li>You have not applied for any policies.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

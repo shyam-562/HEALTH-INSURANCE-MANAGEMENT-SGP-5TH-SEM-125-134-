@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="home-background">
+        <h1>Welcome to Health Insurance Management</h1>
+        <!-- <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'register' %}">Register</a> -->
+    </div>
+    
+   <!-- Side Images -->
+<div class="side-image left-side-image top-image" style="background-image: url('/static/insurance_left.jpg');"></div>
+<div class="side-image left-side-image bottom-image" style="background-image: url('/static/insurance_left1.jpg');"></div>
+<div class="side-image right-side-image top-image" style="background-image: url('/static/insurance_right.jpg');"></div>
+<div class="side-image right-side-image bottom-image" style="background-image: url('/static/insurance_right.png');"></div>
+
+
+
+    <!-- Right Side Banner -->
+    <div class="right-side-banner">
+        <h3>Special Offer</h3>
+        <p>Get a Free Consultation Today!</p>
+    </div>
+
+    <!-- Left Side Banner -->
+    <div class="left-side-banner">
+        <h3>Why Choose Us?</h3>
+        <ul>
+            <li>24/7 Support</li>
+            <li>Easy Claim Process</li>
+        </ul>
+    </div>
+
+    <div class="contact-us-section">
+        <h3>Contact Us</h3>
+        <p>WhatsApp: +1234567890</p>
+        <p>Email: support@healthinsurance.com</p>
+        <p>Phone: +1-800-123-4567</p>
+        <p>Website: www.healthinsurance.com</p>
+        <p>&copy; 2024 Health Insurance Management. All rights reserved.</p>
+    </div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa; /* Light background color */
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            color: #007bff; /* Primary color for headings */
+            text-align: center;
+        }
+        form {
+            max-width: 400px; /* Maximum width for the form */
+            margin: 0 auto; /* Center the form */
+            padding: 20px;
+            background-color: white; /* White background for the form */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+        form p {
+            margin-bottom: 15px; /* Space between each form field */
+        }
+        button {
+            width: 100%; /* Full width button */
+            padding: 10px;
+            background-color: #007bff; /* Primary button color */
+            color: white; /* Button text color */
+            border: none;
+            border-radius: 5px; /* Rounded button corners */
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+        }
+    </style>
+
+    <h2>Register</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+{% endblock %}

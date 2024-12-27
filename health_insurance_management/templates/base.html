@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Health Insurance Management{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                {% if user.is_authenticated %}
+                    {% if not user.is_staff %}
+                        <!-- <li><a href="{% url 'dashboard' %}">Dashboard</a></li> -->
+                        <li><a href="{% url 'profile_update' %}"> Profile</a></li>
+                        <li><a href="{% url 'policy_status' %}"> Policy Status</a></li>
+                        <li><a href="{% url 'available_policies' %}">Policies</a></li>
+                        <li><a href="{% url 'claims' %}"> Claims</a></li>
+                        <li><a href="{% url 'feedback_form' %}">Feedback</a></li>
+                        <!-- <li><a href="{% url 'faq_view' %}"><i class="fas fa-question-circle"></i> FAQs</a></li> -->
+                    {% endif %}
+                    {% if user.is_staff %}
+                        <li><a href="{% url 'admin_dashboard' %}"> Admin Dashboard</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'available_policies' %}">Policies</a></li>
+                    <li><a href="{% url 'login' %}"> Login</a></li>
+                    <li><a href="{% url 'register' %}"> Register</a></li>
+                {% endif %}           
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!-- templates/dashboard/applied_policies.html -->
+{% extends 'base.html' %}
+
+{% block title %}Applied Policies{% endblock %}
+
+{% block content %}
+<h2>Applied Policies</h2>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:nth-child(odd) {
+        background-color: #ffffff;
+    }
+</style>
+<!-- List of Applied Policies -->
+<table>
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Policy</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for status in applied_policies %}
+        <tr>
+            <td>{{ status.user.username }}</td>
+            <td>{{ status.policy.name }}</td>
+            <td>{{ status.status }}</td>
+            <td>
+                <!-- Approve/Reject options if policy status is pending -->
+                {% if status.status == 'Pending' %}
+                    <a href="{% url 'approve_policy' status.policy.id %}">Approve</a> |
+                    <a href="{% url 'reject_policy' status.policy.id %}">Reject</a>
+                {% else %}
+                    No actions available
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

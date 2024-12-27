@@ -1,0 +1,28 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <h2>Dashboard</h2>
+    <h3>Available Policies</h3>
+    <ul>
+        {% for policy in policies %}
+            <li>
+                {{ policy.name }} - <a href="{% url 'policy_details' policy.id %}">Details</a>
+            </li>
+        {% empty %}
+            <li>No policies available.</li>
+        {% endfor %}
+    </ul>
+    <h3>Your Claims</h3>
+    <ul>
+        {% for claim in claims %}
+            <li>
+                {{ claim.policy.name }} - Status: {{ claim.status }}
+            </li>
+        {% empty %}
+            <li>No claims found.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

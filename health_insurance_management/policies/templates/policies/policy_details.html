@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Policy Details{% endblock %}
+
+{% block content %}
+    <h2>{{ policy.name }}</h2>
+    <p>{{ policy.description }}</p>
+    <p>Premium: {{ policy.premium }}</p>
+
+    {% if user.is_authenticated %}
+        {% if has_applied %}
+            <p>You have already applied for this policy.</p>
+        {% else %}
+            {% if error %}
+                <p style="color: red;">{{ error }}</p>
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit">Apply for this Policy</button>
+            </form>
+        {% endif %}
+    {% else %}
+        <p>Please <a href="{% url 'login' %}">login</a> to apply for this policy.</p>
+    {% endif %}
+{% endblock %}
